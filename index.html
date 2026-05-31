@@ -49,10 +49,35 @@
       font-weight: 700;
     }
 
-    header h1 {
+    .name-grid {
+      max-width: 920px;
+      margin: 0 auto 14px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: center;
+      direction: ltr;
+    }
+
+    .name-fr,
+    .name-ar {
       font-size: clamp(2rem, 5vw, 3.15rem);
-      margin-bottom: 14px;
       font-weight: 900;
+      line-height: 1.25;
+    }
+
+    .name-fr {
+      direction: ltr;
+      text-align: left;
+      grid-column: 1;
+      justify-self: start;
+    }
+
+    .name-ar {
+      direction: rtl;
+      text-align: right;
+      grid-column: 2;
+      justify-self: end;
     }
 
     .tagline {
@@ -297,6 +322,7 @@
     }
 
     @media (max-width: 760px) {
+      .name-grid,
       .tagline,
       .intro-grid,
       .section-title,
@@ -306,6 +332,14 @@
         grid-template-columns: 1fr;
       }
 
+      .name-fr,
+      .name-ar {
+        grid-column: auto;
+        justify-self: center;
+      }
+
+      .name-fr,
+      .name-ar,
       .tagline .fr,
       .tagline .ar,
       .intro .fr,
@@ -335,7 +369,10 @@
 
   <header>
     <div class="site-badge">منصة تعليمية متخصصة | Plateforme pédagogique spécialisée</div>
-    <h1>عبد الحق بوعبيدي | Abdelhaq Bouabid</h1>
+    <div class="name-grid" aria-label="Abdelhaq Bouabid | عبد الحق بوعبيدي">
+      <div class="name-fr">Abdelhaq Bouabid</div>
+      <div class="name-ar">عبد الحق بوعبيدي</div>
+    </div>
     <div class="tagline">
       <p class="fr">Plateforme pédagogique spécialisée en Mathématiques et Physique pour faciliter la compréhension et favoriser l’excellence académique.</p>
       <p class="ar">منصة تعليمية متخصصة في الرياضيات والفيزياء لتسهيل الفهم وتعزيز التفوق الأكاديمي.</p>
@@ -607,7 +644,22 @@
     }
 
     function selectResource(resource) {
-      alert(`${resource.ar} | ${resource.fr}\n\nسيتم ربط هذه الخانة لاحقاً بالمحتوى المناسب.\nCette rubrique sera reliée ultérieurement au contenu correspondant.`);
+      if (
+        state.subject &&
+        state.cycle &&
+        state.level &&
+        state.subject.id === "math" &&
+        state.cycle.id === "college" &&
+        state.level.id === "1ac" &&
+        resource.id === "courses"
+      ) {
+        window.open("1. Nombres décimaux positifs", "_blank");
+      } else {
+        alert(`${resource.ar} | ${resource.fr}
+
+سيتم إضافة المحتوى المناسب لهذه الخانة لاحقاً.
+Le contenu correspondant à cette rubrique sera ajouté ultérieurement.`);
+      }
     }
 
     function goBack() {
