@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>عبد الحق بوعبيدي | Abdelhaq Bouabid</title>
+  <meta name="description" content="منصة تعليمية متخصصة في الرياضيات والفيزياء للأستاذ عبد الحق بوعبيدي، تضم الدروس، التمارين، الامتحانات، الملخصات والفيديوهات. Plateforme pédagogique spécialisée en Mathématiques et Physique." />
+
+  <style>
+    :root {
+      --primary: #0f4c81;
+      --secondary: #1d9bf0;
+      --accent: #f5b301;
+      --bg: #f4f7fb;
+      --card: #ffffff;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --shadow: 0 12px 28px rgba(15, 76, 129, 0.13);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, Tahoma, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #ffffff;
+      padding: 62px 20px 48px;
+      text-align: center;
+    }
+
+    .site-badge {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      padding: 8px 18px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+      font-weight: 700;
+    }
+
+    header h1 {
+      font-size: clamp(2rem, 5vw, 3.15rem);
+      margin-bottom: 14px;
+      font-weight: 900;
+    }
+
+    .tagline {
+      max-width: 920px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: start;
+      font-size: 1.05rem;
+      opacity: 0.96;
+    }
+
+    .tagline .fr {
+      direction: ltr;
+      text-align: left;
+    }
+
+    .tagline .ar {
+      direction: rtl;
+      text-align: right;
+    }
+
+    main {
+      max-width: 1180px;
+      margin: auto;
+      padding: 36px 20px 50px;
+    }
+
+    .breadcrumb-panel {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 18px 20px;
+      margin-bottom: 26px;
+      box-shadow: 0 6px 18px rgba(15, 76, 129, 0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .breadcrumb-text {
+      display: grid;
+      gap: 4px;
+    }
+
+    .breadcrumb-text .ar {
+      direction: rtl;
+      text-align: right;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .breadcrumb-text .fr {
+      direction: ltr;
+      text-align: left;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .back-btn {
+      border: none;
+      background: var(--primary);
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 800;
+      transition: 0.25s ease;
+      display: none;
+    }
+
+    .back-btn:hover {
+      background: #0b3558;
+      transform: translateY(-1px);
+    }
+
+    .intro {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      margin-bottom: 30px;
+      border-top: 5px solid var(--accent);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .intro .ar {
+      direction: rtl;
+      text-align: right;
+    }
+
+    .intro .fr {
+      direction: ltr;
+      text-align: left;
+    }
+
+    .intro h2 {
+      color: var(--primary);
+      font-size: 1.55rem;
+      margin-bottom: 10px;
+    }
+
+    .intro p {
+      color: var(--muted);
+      font-size: 1.02rem;
+    }
+
+    .section-title {
+      margin-bottom: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .section-title .ar {
+      direction: rtl;
+      text-align: right;
+      color: var(--primary);
+      font-size: 1.55rem;
+      font-weight: 900;
+    }
+
+    .section-title .fr {
+      direction: ltr;
+      text-align: left;
+      color: var(--primary);
+      font-size: 1.55rem;
+      font-weight: 900;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+      gap: 18px;
+    }
+
+    .choice-card {
+      background: var(--card);
+      border: 1px solid #edf2f7;
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 22px;
+      cursor: pointer;
+      transition: 0.25s ease;
+      min-height: 145px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .choice-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 34px rgba(15, 76, 129, 0.18);
+      border-color: #cfe8ff;
+    }
+
+    .card-labels {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      align-items: start;
+    }
+
+    .card-labels .fr {
+      direction: ltr;
+      text-align: left;
+    }
+
+    .card-labels .ar {
+      direction: rtl;
+      text-align: right;
+    }
+
+    .label-title {
+      display: block;
+      color: var(--primary);
+      font-size: 1.22rem;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .label-subtitle {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .card-footer {
+      margin-top: 18px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      color: var(--secondary);
+      font-weight: 900;
+    }
+
+    .card-footer .fr {
+      direction: ltr;
+      text-align: left;
+    }
+
+    .card-footer .ar {
+      direction: rtl;
+      text-align: right;
+    }
+
+    footer {
+      background: #0b3558;
+      color: #ffffff;
+      padding: 26px 20px;
+      text-align: center;
+    }
+
+    .footer-grid {
+      max-width: 1000px;
+      margin: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      opacity: 0.93;
+    }
+
+    .footer-grid .fr {
+      direction: ltr;
+      text-align: left;
+    }
+
+    .footer-grid .ar {
+      direction: rtl;
+      text-align: right;
+    }
+
+    @media (max-width: 760px) {
+      .tagline,
+      .intro-grid,
+      .section-title,
+      .card-labels,
+      .card-footer,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tagline .fr,
+      .tagline .ar,
+      .intro .fr,
+      .intro .ar,
+      .section-title .fr,
+      .section-title .ar,
+      .card-labels .fr,
+      .card-labels .ar,
+      .card-footer .fr,
+      .card-footer .ar,
+      .footer-grid .fr,
+      .footer-grid .ar {
+        text-align: center;
+      }
+
+      header {
+        padding: 48px 16px 38px;
+      }
+
+      main {
+        padding: 28px 16px 42px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="site-badge">منصة تعليمية متخصصة | Plateforme pédagogique spécialisée</div>
+    <h1>عبد الحق بوعبيدي | Abdelhaq Bouabid</h1>
+    <div class="tagline">
+      <p class="fr">Plateforme pédagogique spécialisée en Mathématiques et Physique pour faciliter la compréhension et favoriser l’excellence académique.</p>
+      <p class="ar">منصة تعليمية متخصصة في الرياضيات والفيزياء لتسهيل الفهم وتعزيز التفوق الأكاديمي.</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="breadcrumb-panel">
+      <div class="breadcrumb-text">
+        <div class="fr" id="breadcrumbFr">Accueil</div>
+        <div class="ar" id="breadcrumbAr">الرئيسية</div>
+      </div>
+      <button class="back-btn" id="backBtn" onclick="goBack()">رجوع | Retour</button>
+    </div>
+
+    <section class="intro" id="introSection">
+      <div class="intro-grid">
+        <div class="fr">
+          <h2>Espace pédagogique structuré</h2>
+          <p>Choisissez la matière, puis le cycle, le niveau et le type de contenu souhaité : cours, exercices, examens, résumés ou vidéos explicatives.</p>
+        </div>
+        <div class="ar">
+          <h2>فضاء تربوي منظم</h2>
+          <p>اختر المادة، ثم السلك الدراسي، ثم المستوى، ثم نوع المحتوى المطلوب: الدروس، التمارين، الامتحانات، الملخصات أو الفيديوهات.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">
+        <div class="fr" id="sectionTitleFr">Choisir une matière</div>
+        <div class="ar" id="sectionTitleAr">اختر المادة</div>
+      </div>
+      <div class="cards-grid" id="cardsGrid"></div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-grid">
+      <p class="fr">© 2026 Abdelhaq Bouabid – Plateforme pédagogique spécialisée en Mathématiques et Physique.</p>
+      <p class="ar">© 2026 عبد الحق بوعبيدي – منصة تعليمية متخصصة في الرياضيات والفيزياء.</p>
+    </div>
+  </footer>
+
+  <script>
+    const data = {
+      subjects: [
+        {
+          id: "math",
+          ar: "الرياضيات",
+          fr: "Mathématiques",
+          arSub: "دروس وتمارين وامتحانات في مادة الرياضيات",
+          frSub: "Cours, exercices et examens en Mathématiques"
+        },
+        {
+          id: "physics",
+          ar: "الفيزياء",
+          fr: "Physique",
+          arSub: "دروس وتمارين وامتحانات في مادة الفيزياء",
+          frSub: "Cours, exercices et examens en Physique"
+        }
+      ],
+      cycles: [
+        {
+          id: "college",
+          ar: "المستوى الإعدادي",
+          fr: "Cycle collégial",
+          arSub: "الأولى، الثانية والثالثة إعدادي",
+          frSub: "Première, deuxième et troisième année collège"
+        },
+        {
+          id: "secondary",
+          ar: "المستوى الثانوي التأهيلي",
+          fr: "Cycle secondaire qualifiant",
+          arSub: "الجذع المشترك، الأولى باكالوريا والثانية باكالوريا",
+          frSub: "Tronc commun, première année Bac et deuxième année Bac"
+        }
+      ],
+      levels: {
+        college: [
+          {
+            id: "1ac",
+            ar: "الأولى إعدادي",
+            fr: "Première année collège",
+            arSub: "موارد تعليمية خاصة بالسنة الأولى إعدادي",
+            frSub: "Ressources pédagogiques pour la première année collège"
+          },
+          {
+            id: "2ac",
+            ar: "الثانية إعدادي",
+            fr: "Deuxième année collège",
+            arSub: "موارد تعليمية خاصة بالسنة الثانية إعدادي",
+            frSub: "Ressources pédagogiques pour la deuxième année collège"
+          },
+          {
+            id: "3ac",
+            ar: "الثالثة إعدادي",
+            fr: "Troisième année collège",
+            arSub: "موارد تعليمية خاصة بالسنة الثالثة إعدادي",
+            frSub: "Ressources pédagogiques pour la troisième année collège"
+          }
+        ],
+        secondary: [
+          {
+            id: "tc",
+            ar: "الجذع المشترك",
+            fr: "Tronc commun",
+            arSub: "موارد تعليمية خاصة بالجذع المشترك",
+            frSub: "Ressources pédagogiques pour le tronc commun"
+          },
+          {
+            id: "1bac",
+            ar: "الأولى باكالوريا",
+            fr: "Première année Bac",
+            arSub: "موارد تعليمية خاصة بالسنة الأولى باكالوريا",
+            frSub: "Ressources pédagogiques pour la première année Bac"
+          },
+          {
+            id: "2bac",
+            ar: "الثانية باكالوريا",
+            fr: "Deuxième année Bac",
+            arSub: "موارد تعليمية خاصة بالسنة الثانية باكالوريا",
+            frSub: "Ressources pédagogiques pour la deuxième année Bac"
+          }
+        ]
+      },
+      resources: [
+        {
+          id: "courses",
+          ar: "الدروس",
+          fr: "Cours",
+          arSub: "دروس منظمة حسب البرنامج الدراسي",
+          frSub: "Leçons structurées selon le programme scolaire"
+        },
+        {
+          id: "exercises",
+          ar: "التمارين",
+          fr: "Exercices",
+          arSub: "تمارين تطبيقية لترسيخ المكتسبات",
+          frSub: "Exercices d’application pour consolider les acquis"
+        },
+        {
+          id: "exams",
+          ar: "الامتحانات",
+          fr: "Examens",
+          arSub: "فروض واختبارات ونماذج امتحانات",
+          frSub: "Devoirs, évaluations et modèles d’examens"
+        },
+        {
+          id: "summaries",
+          ar: "الملخصات",
+          fr: "Résumés",
+          arSub: "ملخصات مركزة للمراجعة السريعة",
+          frSub: "Synthèses ciblées pour une révision efficace"
+        },
+        {
+          id: "videos",
+          ar: "الفيديوهات",
+          fr: "Vidéos explicatives",
+          arSub: "شروحات مرئية مبسطة ومنظمة",
+          frSub: "Explications vidéo claires et structurées"
+        }
+      ]
+    };
+
+    const state = {
+      step: "subjects",
+      subject: null,
+      cycle: null,
+      level: null,
+      history: []
+    };
+
+    function createCard(item, onClick) {
+      const card = document.createElement("article");
+      card.className = "choice-card";
+      card.onclick = onClick;
+
+      card.innerHTML = `
+        <div class="card-labels">
+          <div class="fr">
+            <span class="label-title">${item.fr}</span>
+            <span class="label-subtitle">${item.frSub || ""}</span>
+          </div>
+          <div class="ar">
+            <span class="label-title">${item.ar}</span>
+            <span class="label-subtitle">${item.arSub || ""}</span>
+          </div>
+        </div>
+        <div class="card-footer">
+          <span class="fr">Access</span>
+          <span class="ar">دخول</span>
+        </div>
+      `;
+
+      return card;
+    }
+
+    function setTitles(fr, ar) {
+      document.getElementById("sectionTitleFr").textContent = fr;
+      document.getElementById("sectionTitleAr").textContent = ar;
+    }
+
+    function setBreadcrumb() {
+      const partsFr = ["Accueil"];
+      const partsAr = ["الرئيسية"];
+
+      if (state.subject) {
+        partsFr.push(state.subject.fr);
+        partsAr.push(state.subject.ar);
+      }
+
+      if (state.cycle) {
+        partsFr.push(state.cycle.fr);
+        partsAr.push(state.cycle.ar);
+      }
+
+      if (state.level) {
+        partsFr.push(state.level.fr);
+        partsAr.push(state.level.ar);
+      }
+
+      document.getElementById("breadcrumbFr").textContent = partsFr.join(" / ");
+      document.getElementById("breadcrumbAr").textContent = partsAr.join(" / ");
+      document.getElementById("backBtn").style.display = state.history.length ? "inline-block" : "none";
+    }
+
+    function render(items, onSelect) {
+      const grid = document.getElementById("cardsGrid");
+      grid.innerHTML = "";
+      items.forEach(item => grid.appendChild(createCard(item, () => onSelect(item))));
+      setBreadcrumb();
+    }
+
+    function showSubjects() {
+      state.step = "subjects";
+      state.subject = null;
+      state.cycle = null;
+      state.level = null;
+      setTitles("Choisir une matière", "اختر المادة");
+      render(data.subjects, selectSubject);
+    }
+
+    function selectSubject(subject) {
+      state.history.push({ step: state.step, subject: state.subject, cycle: state.cycle, level: state.level });
+      state.step = "cycles";
+      state.subject = subject;
+      state.cycle = null;
+      state.level = null;
+      setTitles("Choisir un cycle", "اختر السلك الدراسي");
+      render(data.cycles, selectCycle);
+    }
+
+    function selectCycle(cycle) {
+      state.history.push({ step: state.step, subject: state.subject, cycle: state.cycle, level: state.level });
+      state.step = "levels";
+      state.cycle = cycle;
+      state.level = null;
+      setTitles("Choisir un niveau", "اختر المستوى");
+      render(data.levels[cycle.id], selectLevel);
+    }
+
+    function selectLevel(level) {
+      state.history.push({ step: state.step, subject: state.subject, cycle: state.cycle, level: state.level });
+      state.step = "resources";
+      state.level = level;
+      setTitles("Choisir le type de contenu", "اختر نوع المحتوى");
+      render(data.resources, selectResource);
+    }
+
+    function selectResource(resource) {
+      alert(`${resource.ar} | ${resource.fr}\n\nسيتم ربط هذه الخانة لاحقاً بالمحتوى المناسب.\nCette rubrique sera reliée ultérieurement au contenu correspondant.`);
+    }
+
+    function goBack() {
+      const previous = state.history.pop();
+      if (!previous) return;
+
+      state.step = previous.step;
+      state.subject = previous.subject;
+      state.cycle = previous.cycle;
+      state.level = previous.level;
+
+      if (state.step === "subjects") {
+        setTitles("Choisir une matière", "اختر المادة");
+        render(data.subjects, selectSubject);
+      }
+
+      if (state.step === "cycles") {
+        setTitles("Choisir un cycle", "اختر السلك الدراسي");
+        render(data.cycles, selectCycle);
+      }
+
+      if (state.step === "levels") {
+        setTitles("Choisir un niveau", "اختر المستوى");
+        render(data.levels[state.cycle.id], selectLevel);
+      }
+
+      if (state.step === "resources") {
+        setTitles("Choisir le type de contenu", "اختر نوع المحتوى");
+        render(data.resources, selectResource);
+      }
+    }
+
+    showSubjects();
+  </script>
+</body>
+</html>
